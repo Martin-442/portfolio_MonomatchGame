@@ -30,7 +30,7 @@ function endTheGame() {
 }
 
 function checkNum(event) {
-    //console.log(event);
+    console.log(event);
     const clickedNum = event.path[0].innerText;
     console.log(clickedNum);
     console.log('#' + event.path[1].id + ' .cardNr' + clickedNum);
