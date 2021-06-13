@@ -31,22 +31,26 @@ function endTheGame() {
 
 function checkNum(event) {
     console.log(event);
-    const clickedNum = event.path[0].innerText;
+    console.log('srcElement' + event.srcElement);
+    console.log('parantElement' + event.srcElement.parantElement);
+    console.log('path:' + event.path);
+    const clickedNum = event.srcElement.innerText;
+    const clickedNumParent = event.srcElement.parentElement;
     console.log(clickedNum);
-    console.log('#' + event.path[1].id + ' .cardNr' + clickedNum);
-    const clickedNumElement = document.querySelector('#' + event.path[1].id + ' .cardNr' + clickedNum);
+    console.log('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
+    const clickedNumElement = document.querySelector('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
     clickedNumElement.style.color = 'black';
     console.log('setCard1 ' + setCard1);
     console.log(setCard1.includes(parseInt(clickedNum)));
     let matchingNumElement = '';
-    if (event.path[1].id == 'card1') {
+    if (clickedNumParent.id == 'card1') {
         matchingNumElement = document.querySelector('#card2 .cardNr' + clickedNum);
         if (setCard2.includes(parseInt(clickedNum))) {
             clickedNumElement.style.backgroundColor = 'green';
             matchingNumElement.style.backgroundColor = 'green';
             endTheGame();
         }
-    } else if (event.path[1].id == 'card2') {
+    } else if (clickedNumParent.id == 'card2') {
         matchingNumElement = document.querySelector('#card1 .cardNr' + clickedNum);
         if (setCard1.includes(parseInt(clickedNum))) {
             clickedNumElement.style.backgroundColor = 'green';
