@@ -1,2 +1,2 @@
 # portfolio_MonomatchGame
-online game adaptation on "Double" board game
+online game adaptation of the "Double" board game. 
