@@ -30,18 +30,10 @@ function endTheGame() {
 }
 
 function checkNum(event) {
-    console.log(event);
-    console.log('srcElement' + event.srcElement);
-    console.log('parantElement' + event.srcElement.parantElement);
-    console.log('path:' + event.path);
     const clickedNum = event.srcElement.innerText;
     const clickedNumParent = event.srcElement.parentElement;
-    console.log(clickedNum);
-    console.log('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
     const clickedNumElement = document.querySelector('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
     clickedNumElement.style.color = 'black';
-    console.log('setCard1 ' + setCard1);
-    console.log(setCard1.includes(parseInt(clickedNum)));
     let matchingNumElement = '';
     if (clickedNumParent.id == 'card1') {
         matchingNumElement = document.querySelector('#card2 .cardNr' + clickedNum);
@@ -80,14 +72,14 @@ for (const oneCardOnScreen of cardsOnScreen) {
     }
 
     const numbersOnCards = document.querySelectorAll(oneCardOnScreen + ' a');
-    console.log(numbersOnCards);
     for (const eachNumA of numbersOnCards) {
         eachNumA.addEventListener('click', checkNum);
     }
 }
 
 
-// nice to have: 
+// to do: 
+// - other font
 // - timer
 // - choose the amount of numbers on a card
 // - rotate numbers / random size
