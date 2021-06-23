@@ -5,8 +5,8 @@ const cardsOnScreen = [
     '#card1',
     '#card2'
 ];
-let setCard1 = [];
-let setCard2 = [];
+let cardSet1 = [];
+let cardSet2 = [];
 
 
 const gameCards = cards;
@@ -23,55 +23,69 @@ function shuffleNums(a) {
 }
 
 function endTheGame() {
-    const removeEL = document.querySelectorAll('a')
+    // removing all eventListeners for the numbers
+    const removeEL = document.querySelectorAll('button span')
     for (const i of removeEL) {
         i.removeEventListener('click', checkNum);
     }
 }
 
 function checkNum(event) {
-    const clickedNum = event.srcElement.innerText;
-    const clickedNumParent = event.srcElement.parentElement;
+    console.log(this.innerText);
+    const clickedNum = this.innerText;
+    const clickedNumParent = this.parentElement.parentElement;
     const clickedNumElement = document.querySelector('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
-    clickedNumElement.style.color = 'black';
+    console.log(clickedNumElement);
+    clickedNumElement.style.color = 'var(--click-number)';
     let matchingNumElement = '';
     if (clickedNumParent.id == 'card1') {
         matchingNumElement = document.querySelector('#card2 .cardNr' + clickedNum);
-        if (setCard2.includes(parseInt(clickedNum))) {
-            clickedNumElement.style.backgroundColor = 'green';
-            matchingNumElement.style.backgroundColor = 'green';
+        if (cardSet2.includes(parseInt(clickedNum))) {
+            clickedNumElement.parentElement.style.backgroundColor = 'var(--click-success)';
+            matchingNumElement.parentElement.style.backgroundColor = 'var(--click-success)';
             endTheGame();
         }
     } else if (clickedNumParent.id == 'card2') {
         matchingNumElement = document.querySelector('#card1 .cardNr' + clickedNum);
-        if (setCard1.includes(parseInt(clickedNum))) {
-            clickedNumElement.style.backgroundColor = 'green';
-            matchingNumElement.style.backgroundColor = 'green';
+        if (cardSet1.includes(parseInt(clickedNum))) {
+            clickedNumElement.parentElement.style.backgroundColor = 'var(--click-success)';
+            matchingNumElement.parentElement.style.backgroundColor = 'var(--click-success)';
             endTheGame(); 
         }
     }
 }
 
-
+// loop through cards in gameset (2 cards)
 for (const oneCardOnScreen of cardsOnScreen) {
+    // random card from card stack
     const randomCard = Math.floor(Math.random() * gameCards.length);
-    let randomCardNums = gameCards[randomCard];
+    // shuffle numbers in card array
+    const randomCardNums = shuffleNums(gameCards[randomCard]);
+    // delete random card from array to avoid same cards in the gameset
     gameCards.splice(randomCard,1);
-    randomCardNums = shuffleNums(randomCardNums);
-    for (const number of randomCardNums) {
-        const newaHTML = document.querySelector(oneCardOnScreen + ' a').cloneNode(true);
-        document.querySelector(oneCardOnScreen).append(newaHTML);
-        newaHTML.innerText = number;
-        newaHTML.classList.add('cardNr'+number);
-    }
-    document.querySelector(oneCardOnScreen + ' a').remove();
+    // create 2 cardsets defined outside the loop
     if (oneCardOnScreen == cardsOnScreen[0]) {
-        setCard1 = randomCardNums;
+        cardSet1 = randomCardNums;
     } else {
-        setCard2 = randomCardNums;
+        cardSet2 = randomCardNums;
     }
 
-    const numbersOnCards = document.querySelectorAll(oneCardOnScreen + ' a');
+    // loop through numbers for one card
+    const buttonsOnCardTemplate = document.querySelector(oneCardOnScreen + ' button');
+    // remove template
+    buttonsOnCardTemplate.remove();
+    // loop through numbers on card to create a visual card set
+    for (const number of randomCardNums) {
+        const buttonOnCard = buttonsOnCardTemplate.cloneNode(true);
+        const buttonOnCardText = buttonOnCard.querySelector('span');
+        document.querySelector(oneCardOnScreen).append(buttonOnCard);
+        buttonOnCardText.classList.add('cardNr'+number);
+        buttonOnCardText.innerText = number;
+        buttonOnCardText.classList.add('font__Kalem');
+    }
+
+    // add eventListener on each number
+    const numbersOnCards = document.querySelectorAll(oneCardOnScreen + ' button span');
     for (const eachNumA of numbersOnCards) {
         eachNumA.addEventListener('click', checkNum);
     }
@@ -79,10 +93,7 @@ for (const oneCardOnScreen of cardsOnScreen) {
 
 
 // to do: 
-// - other font
 // - timer
 // - choose the amount of numbers on a card
 // - rotate numbers / random size
 // - change numbers to icons
-
-

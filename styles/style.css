@@ -1,3 +1,21 @@
+:root {
+    --page-bg: steelblue;
+    --gameset-bg: bisque;
+    --card-bg: darkgoldenrod;
+    --number-bg: dimgray;
+    --number: gainsboro;
+    --click-number: black;
+    --click-success: green;
+}
+:root { /* color set variation */
+    --page-bg:  #647d8b;
+    --gameset-bg: #86A19E;
+    --card-bg: #688aa75d;
+    --number-bg: #688aa7;
+    --number: #d5d5d5;
+    --click-number: #222222;
+    --click-success: #FBa100;
+}
 *:not(input) {
     box-sizing: border-box;
     padding: 0; 
@@ -5,13 +23,13 @@
     border: 0; 
 }
 body {
-    background-color: steelblue;
+    background-color: var(--page-bg);
 }
 #gameset {
     width: 400px; 
     height: 200px; 
-    margin: 60px auto; 
-    background-color: bisque;
+    margin: 30px auto; 
+    background-color: var(--gameset-bg);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -21,21 +39,40 @@ body {
     width: 190px; 
     height: 190px; 
     border-radius: 50%;
-    background-color: darkgoldenrod;
+    background-color: var(--card-bg);
     display: flex;
     justify-content: center; 
     align-items: center;
     flex-wrap: wrap;
-    padding: 27px 20px;
+    gap: 1px;
+    padding: 27px 18px;
 }
-a {
+span {
+    width: 100%;
+}
+button {
     height: 50px;
     width: 50px;
-    padding-top: 10px;
-    color: gainsboro;
+    color: var(--number);
     text-align: center;
-    font-size: 1.5rem;
     text-decoration: none;
-    background-color: dimgray;
+    background-color: var(--number-bg);
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+button .font__Kalem {
+    /* Kalam font settings */
+    font-family: 'Kalam', cursive;
+    padding-top: 4px;
+    font-size: 1.8rem;
+    padding-top: 0.3rem;
+}
+button .font__Arizona {
+    /* Arizonia font settings */
+    font-family: 'Arizonia', cursive;
+    padding-top: 0;
+    font-size: 2.0rem;
+    padding-top: 0.2rem;
 }
