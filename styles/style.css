@@ -28,7 +28,8 @@ body {
 #gameset {
     width: 400px; 
     height: 200px; 
-    margin: 30px auto; 
+    margin: auto; 
+    margin-top: 30px;
     background-color: var(--gameset-bg);
     display: flex;
     justify-content: space-around;
@@ -47,32 +48,70 @@ body {
     gap: 1px;
     padding: 27px 18px;
 }
-span {
+#gameset span {
     width: 100%;
 }
-button {
+#gameset button {
     height: 50px;
     width: 50px;
     color: var(--number);
-    text-align: center;
-    text-decoration: none;
     background-color: var(--number-bg);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: baseline;
 }
-button .font__Kalem {
-    /* Kalam font settings */
+#gameset .success {
+    /* background-color: var(--click-success); */
+    opacity: 0.6; 
+    transition: opacity 1s ease;
+}
+
+/* Kalam font settings */
+.font__Kalem {
     font-family: 'Kalam', cursive;
-    padding-top: 4px;
+}
+#gameset .font__Kalem {
     font-size: 1.8rem;
     padding-top: 0.3rem;
 }
-button .font__Arizona {
-    /* Arizonia font settings */
+#newgame.font__Kalem {
+    font-size: 2.3rem;
+}
+
+/* Arizonia font settings */
+#gameset .font__Arizona {
     font-family: 'Arizonia', cursive;
-    padding-top: 0;
     font-size: 2.0rem;
     padding-top: 0.2rem;
+}
+
+
+/* New game button*/
+#newgame {
+    color: var(--number);
+    background-color: var(--number-bg);
+    border-radius: 20px;
+    display: block;
+    width: 280px;
+    height: 54px;
+    margin: auto;
+    margin-top: 10px; 
+    /* position: absolute;
+    top: 100px;
+    left: 40%; */
+}
+#newgame.fadeout {
+    opacity: 0; 
+    transition: opacity 1s ease;
+}
+#newgame.fadein {
+    opacity: 1; 
+    transition: opacity 1s ease;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
 }

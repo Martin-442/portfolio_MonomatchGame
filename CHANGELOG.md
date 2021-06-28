@@ -1,3 +1,10 @@
+# 1.2
+28-06-2021
+- »New game« button added
+- »New game« button appears if dobble is clicked on one card
+- opponents cards transforms to opacity 
+
+
 # 1.1 
 23-06-2021
 - CHANGELOG.md added
