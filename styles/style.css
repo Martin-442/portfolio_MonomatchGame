@@ -96,22 +96,41 @@ body {
     width: 280px;
     height: 54px;
     margin: auto;
-    margin-top: 10px; 
-    /* position: absolute;
-    top: 100px;
-    left: 40%; */
+    position: relative;
+    z-index: 10;
 }
 #newgame.fadeout {
     opacity: 0; 
     transition: opacity 1s ease;
+    margin-top: -1000px; 
 }
 #newgame.fadein {
     opacity: 1; 
     transition: opacity 1s ease;
+    margin-top: -351px; 
 }
 
-img {
+/* page qr-code formatting */
+#qrcode {
+    background-color: var(--gameset-bg);
+    border-radius: 20px;
+    font-size: 10px;
+    padding: 10px; 
+    color: var(--page-bg);
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+#qrcode svg {
     width: 100px;
     height: 100px;
-    margin: auto;
+    opacity: 1; 
+    background-color: var(--gameset-bg);
+    padding-bottom: 5px;
+}
+#qrcode rect, #qrcode path {
+    fill: var(--page-bg);
 }

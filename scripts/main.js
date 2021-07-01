@@ -125,8 +125,6 @@ function endTheGame() {
 
 
 
-
-
 // to do: 
 // - timer
 // - choose the amount of numbers on a card

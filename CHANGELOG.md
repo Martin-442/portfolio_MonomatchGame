@@ -1,9 +1,14 @@
+# 1.2.1
+01-07-2021
+- QR-code added and formatted (URL: portfolio-martin442-monomatchgame.netlify.app)
+- »New game« button placed over the cardset for better mobile landscape orientation experience
+- »New game« z-index/position added to .fadein and .fadeout
+
 # 1.2
 28-06-2021
 - »New game« button added
 - »New game« button appears if dobble is clicked on one card
 - opponents cards transforms to opacity 
-
 
 # 1.1 
 23-06-2021
