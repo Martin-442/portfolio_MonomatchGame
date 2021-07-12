@@ -12,16 +12,37 @@ let cardSet2 = [];
 const gameCards = cards;
 
 // create template for number buttons
-const buttonsOnCardTemplate = document.querySelector('#gameset button');
-// new game button
-const newGameButton = document.querySelector('#newgame');
+const buttonsOnCardTemplate = document.querySelector('._gameset_zen button');
+// define parts of gameplay
+const welcomeCard = document.querySelector('._gamestart');
+const GameZenCard = document.querySelector('._gameset_zen');
+// define button elements
+const newGameButton = welcomeCard.querySelector('._startgame');
+const newCardsButton = document.querySelector('._newcards');
 
 // store opponents cards
 let opponent = '';
+let angle = '(0deg)';
+const underLineChar = [6, 9, 16, 18, 19, 51]; 
+let allowRotation = false; 
+let allowIcons = true; 
 
-initScreen();
+/* random set of rotation/no rotation and icons/numbers */
+allowRotation = Math.floor(Math.random()*2); 
+allowIcons = Math.floor(Math.random()*2); 
 
 
+initGameScreen(); 
+// initZenMode();
+
+function initGameScreen() {
+    welcomeCard.style.display = 'flex';
+    newGameButton.classList.add('font__Kalem'); 
+    welcomeCard.querySelector('h1').classList.add('font__Kalem'); 
+    welcomeCard.querySelector('p').classList.add('font__Kalem'); 
+    GameZenCard.style.display = 'none';
+    newGameButton.addEventListener('click', startNewZenGame );
+}
 
 function shuffleNums(a) {
     let j, x, i;
@@ -34,12 +55,12 @@ function shuffleNums(a) {
     return a;
 }
 
-function initScreen() {
+function initZenMode() {
     // let new game button disappear
-    newGameButton.classList.add('font__Kalem'); 
-    newGameButton.classList.add('fadeout');
+    newCardsButton.classList.add('font__Kalem'); 
+    newCardsButton.classList.add('fadeout');
     // remove all button elements from screen
-    const removeButtons = document.querySelectorAll('#gameset button');
+    const removeButtons = document.querySelectorAll('._gameset_zen button');
     for (const i of removeButtons) {
         i.remove();
     }
@@ -66,8 +87,20 @@ function initScreen() {
             const buttonOnCardText = buttonOnCard.querySelector('span');
             document.querySelector(oneCardOnScreen).append(buttonOnCard);
             buttonOnCardText.classList.add('cardNr'+number);
-            buttonOnCardText.innerText = number;
+            if (allowIcons) { /* icons or unbers */
+                buttonOnCardText.innerHTML = fe_icons_57[number];
+            } else {
+                buttonOnCardText.innerText = number;
+            }
             buttonOnCardText.classList.add('font__Kalem');
+            if (allowRotation) { /* rotate for more fun :) */ 
+                angle = '(' + (Math.floor(Math.random() * 5)) * 72 + "deg)";
+                buttonOnCardText.style.transform = 'rotate' + angle;
+                if (underLineChar.includes(number)) {
+                    buttonOnCardText.style.textDecoration = 'underline';
+                    buttonOnCardText.style.paddingTop = '0.1rem';
+                }
+            }
         }
 
         // add eventListener on each number
@@ -79,7 +112,8 @@ function initScreen() {
 }
 
 function checkNum(event) {
-    const clickedNum = this.innerText;
+    const clickedClasses = this.classList; 
+    const clickedNum = clickedClasses[0].substr(6, clickedClasses[0].length - 6); /* number from className, ie 'cardNr23' */
     const clickedNumParent = this.parentElement.parentElement;
     const clickedNumElement = document.querySelector('#' + clickedNumParent.id + ' .cardNr' + clickedNum);
     clickedNumElement.style.color = 'var(--click-number)';
@@ -105,11 +139,17 @@ function checkNum(event) {
     }
 }
 
-function startNextGame() {
-    newGameButton.removeEventListener('click', initScreen );
-    newGameButton.classList.toggle('fadein');
+function startNewZenGame() {
+    welcomeCard.style.display = 'none';
+    GameZenCard.style.display = 'flex';
+    initZenMode(); 
+}
+
+function startNextZenGame() {
+    newCardsButton.removeEventListener('click', initZenMode );
+    newCardsButton.classList.toggle('fadein');
     opponent.parentElement.classList.remove('success');
-    initScreen(); 
+    initZenMode(); 
 }
 
 function endTheGame() {
@@ -119,14 +159,12 @@ function endTheGame() {
         i.removeEventListener('click', checkNum);
     }
     /* show new game button */
-    newGameButton.classList.add('fadein');
-    newGameButton.addEventListener('click', startNextGame );
+    newCardsButton.classList.add('fadein');
+    newCardsButton.addEventListener('click', startNextZenGame );
 }
 
 
 
 // to do: 
 // - timer
-// - choose the amount of numbers on a card
-// - rotate numbers / random size
-// - change numbers to icons
+// - 2 player mode

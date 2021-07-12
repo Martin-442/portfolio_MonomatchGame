@@ -5,28 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monomatch game</title>
-    <link rel="stylesheet" href="styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Kalam&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Arizonia&family=Kalam&display=swap"
+    rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <div id="gameset">
-      <div id="card1">
+    <div id="gamestart" class="_gamestart">
+      <h1>Monomatch game</h1>
+      <p class="description">Start the game and click on the only icon that is present on both cards.</p>
+      <button id="startgame" class="_startgame">Start&nbsp;game</button>
+    </div>
+    <div id="gameset_zen" class="_gameset_zen">
+      <div id="card1" class="card _card1">
         <button href="#">
           <span></span>
         </button>
       </div>
-      <div id="card2">
+      <div id="card2" class="card _card2">
         <button href="#">
           <span></span>
         </button>
       </div>
     </div>
-    <button id="qrcode">
+    <button id="qrcode" class="_qrcode">
         <svg width="100%" height="100%" viewBox="0 0 250 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
             <path d="M77.686,17.341l25.862,0l0,-17.341l-17.341,0l-0,8.621l-17.241,-0l-0,17.341l8.72,0l0,-8.621Z"/>
             <rect x="17.241" y="17.241" width="25.962" height="25.962"/>
@@ -87,8 +93,9 @@
         </svg>
             portfolio-martin442-monomatchgame.netlify.app
             </button>
-    <button id="newgame">New&nbsp;game</button>
+    <button id="newcards" class="_newcards">New card set</button>
     <script src="scripts/theDoubleAlgorithm.js"></script>
+    <script src="scripts/faIcons.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>

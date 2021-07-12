@@ -1,3 +1,14 @@
+# 1.3
+12-07-2021
+- Start screen added
+- icons added: array of 57 fontawesome.com icons 
+- random rotation to numbers/icons added
+- random value to select either rotation/no rotation or icons/numbers on each page reload
+- rotated numbers (6, 9, 16, 18, 19, 51) are underlined to avoid confusion
+- Element ID's removed from CSS to destinct between CSS and JS - according to this hint: https://csswizardry.com/2013/05/hashed-classes-in-css/ 
+- a couple of class-name changes to cover possible future features…
+
+
 # 1.2.1
 01-07-2021
 - QR-code added and formatted (URL: portfolio-martin442-monomatchgame.netlify.app)
