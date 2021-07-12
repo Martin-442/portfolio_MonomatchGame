@@ -1,3 +1,7 @@
+# 1.3.1
+12-07-2021
+- minor adjustments
+
 # 1.3
 12-07-2021
 - Start screen added

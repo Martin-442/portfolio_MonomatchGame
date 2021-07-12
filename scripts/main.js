@@ -41,6 +41,7 @@ function initGameScreen() {
     welcomeCard.querySelector('h1').classList.add('font__Kalem'); 
     welcomeCard.querySelector('p').classList.add('font__Kalem'); 
     GameZenCard.style.display = 'none';
+    newCardsButton.style.display = 'none';
     newGameButton.addEventListener('click', startNewZenGame );
 }
 
@@ -57,6 +58,7 @@ function shuffleNums(a) {
 
 function initZenMode() {
     // let new game button disappear
+    newCardsButton.style.display = 'block';
     newCardsButton.classList.add('font__Kalem'); 
     newCardsButton.classList.add('fadeout');
     // remove all button elements from screen
